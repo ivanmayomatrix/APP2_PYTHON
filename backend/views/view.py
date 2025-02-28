@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from controller import Controller
+from controllers.controller import Controller
 
-app = Flask(__name__, static_folder='../frontend')
+app = Flask(__name__, static_folder='../../frontend')
 CORS(app)
 controller = Controller()
 
@@ -15,6 +15,7 @@ def register():
 
 @app.route("/login", methods=["POST"])
 def login():
+    print("Recibiendo petición de inicio de sesión")
     data = request.json
     username = data["username"]
     password = data["password"]
@@ -34,8 +35,8 @@ def static_proxy(path):
 
 @app.route('/')
 def root():
+    print("Enviando login.html: ", app.static_folder)
     return send_from_directory(app.static_folder, 'login.html')
-
 
 if __name__ == "__main__":
     app.run(debug=True)

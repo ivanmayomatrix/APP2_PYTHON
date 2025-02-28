@@ -43,7 +43,7 @@ class Database:
         self.cursor.execute("SELECT password FROM users WHERE username = ?", (username,))
         user = self.cursor.fetchone()
         if user:
-            stored_hash = user[0]
+            stored_hash = self.hash_password(user[0])
             provided_hash = self.hash_password(password)
             print(f"Database: Stored hash: {stored_hash}")
             print(f"Database: Provided hash: {provided_hash}")

@@ -1,4 +1,4 @@
-from model import Database
+from models.model import Database
 
 class Controller:
     def __init__(self):
