@@ -35,9 +35,6 @@ if cursor.fetchone()[0] == 0:
 
 # Insertar usuario por defecto si no existe
 cursor.execute("SELECT COUNT(*) FROM users WHERE username = 'admin'")
-if cursor.fetchone()[0] == 0:
-    cursor.execute("INSERT INTO users (username, password) VALUES ('admin', '1234')")
-    print("✅ Usuario por defecto creado: admin / 1234")
 
 # Guardar cambios y cerrar conexión
 conn.commit()
